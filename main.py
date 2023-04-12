@@ -1,31 +1,28 @@
-import paramiko , os , datetime
 
-# Variables
-user = input("Enter User Device: ")
-password = input("Enter Password Device: ")
-port = input("Enter SSH Port Device: ")
-tftp = input("Enter TFTP Server IP: ")
-win_user = os.getlogin()
-infilepath = f"c:\\Users\\{win_user}\\Downloads\\"
-outfilepath = f"c:\\Users\\{win_user}\\Downloads\\"
-devicelist = "iplist.txt"
-date  = datetime.datetime.now().strftime('%m_%d_%Y_%H_%M_%S')
+from colorama import init,Fore
+init()
+blue= Fore.BLUE
+red=Fore.RED
+cyan=Fore.CYAN
+white=Fore.WHITE
+green=Fore.GREEN
+reset=Fore.RESET
 
-# Paramiko 
-ssh = paramiko.SSHClient()
-ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+from modules import disable_dot1x,enable_dot1x,backup
+import functions
+import os
 
-# Read IP List Devices From File "ip-list.txt"
-input_file = open( infilepath + devicelist, "r")
-iplist = input_file.readlines()
-input_file.close()
+while True:
+    os.system("clear" or "cls")
+    functions.Tools.banner(None)
+    functions.Tools.options(None)
 
-# Connect to Device and Execute Commands and Save to file
-
-for ip in iplist:
-    ipaddr = ip.strip()
-    ssh.connect(hostname=ipaddr, username=user, password=password, port=port)
-    command = f"copy startup-config tftp://{tftp}/" + str(ipaddr)+ "-" + date
-    stdin, stdout, stderr = ssh.exec_command(command)
-    ssh.close()
-    
+    try:
+        num=input(f"{green}[ + ]{reset} Enter a Number from list: ")
+        if num=="4":
+            os.system("clear" or "cls")
+            disable_dot1x.device["ip"]=input("Enter Device IP: ")
+    except Exception as e:
+        print(f"{red} Error: {e}")
+        input()
+        continue

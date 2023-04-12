@@ -1,30 +1,43 @@
-from netmiko import ConnectHandler
 
-# Define the device details
-device = {
-    'device_type': 'cisco_ios',
-    'ip': 'ip',  # Replace with the switch IP address
-    'username': 'admin',
-    'password': 'Skills39~!@',
-}
+from colorama import init,Fore
+init()
+blue= Fore.BLUE
+red=Fore.RED
+cyan=Fore.CYAN
+white=Fore.WHITE
+green=Fore.GREEN
+reset=Fore.RESET
 
-# Define the interface details
-device["ip"]=input("Enter Device IP: ")
-interface = input("Enter Interface ID: ")
+class Tools:
+    def banner(self=None):
+        print(f"""
+{cyan}
+'##::::'##:'########:'##:::::::'##::::::::'#######::'##:::::'##:
+###::'###: ##.....:: ##::::::: ##:::::::'##.... ##: ##:'##: ##:
+####'####: ##::::::: ##::::::: ##::::::: ##:::: ##: ##: ##: ##:
+## ### ##: ######::: ##::::::: ##::::::: ##:::: ##: ##: ##: ##:
+##. #: ##: ##...:::: ##::::::: ##::::::: ##:::: ##: ##: ##: ##:
+##:.:: ##: ##::::::: ##::::::: ##::::::: ##:::: ##: ##: ##: ##:
+##:::: ##: ########: ########: ########:. #######::. ###. ###::
+..:::::..::........::........::........:::.......::::...::...:::        
+{blue}
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Connect to the device
-with ConnectHandler(**device) as net_connect:
-    # Enter privileged EXEC mode
-    net_connect.enable()
+        ~   Code by: Mohammad Fathi                     ~
+        ~   Github: https://github.com/mohammad-fathi   ~
+        ~   email: m.fathi3742@gmail.com                ~
+
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        {reset}""")
     
-    # Configure the interface in access mode
-    config_commands = [
-        f'interface GigabitEthernet{interface}',
-        'no  authentication port-control auto',
-        'no dot1x pae authenticator',
-        'do wr',
-    ]
-    output = net_connect.send_config_set(config_commands)
+
+    def options(self=None):
+            print(f"""
+    Options:{red}
     
-    # Print the output
-    print(output)
+      [ 1 ]   -   VLAN
+      [ 2 ]   -   Port Security
+      [ 3 ]   -   Backup
+      [ 4 ]   -   Disable IEEE 802.1x
+      [ 5 ]   -   Enable IEEE 802.1x
+""")

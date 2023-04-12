@@ -1,4 +1,3 @@
-
 from colorama import init,Fore
 init()
 blue= Fore.BLUE
@@ -9,6 +8,7 @@ green=Fore.GREEN
 reset=Fore.RESET
 
 class Tools:
+# Function Banner    
     def banner(self=None):
         print(f"""
 {cyan}
@@ -29,8 +29,8 @@ class Tools:
 
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         {reset}""")
-    
 
+# Function Options        
     def options(self=None):
             print(f"""
     Options:{red}

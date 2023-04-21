@@ -125,7 +125,7 @@ while True:
                         'username': user,
                         'password': password,
                     }
-                    # Call Module Trunk 
+                    # Call Module Port Security 
                     portsecurity.poersec_class.port_security_func(device_info=device_info,port_number=portrange)               
                     
 

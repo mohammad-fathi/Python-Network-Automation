@@ -9,11 +9,11 @@ green=Fore.GREEN
 reset=Fore.RESET
 
 from modules import Hostname,vlan,trunk,portsecurity
-import functions , os , getpass
+import functions , os , getpass , time
 
 # Call Functions Main Menu
 while True:
-    os.system("clear" or "cls")
+    os.system("cls" or "clear")
     functions.Tools.banner(None)
     functions.Tools.options(None)
 
@@ -22,7 +22,7 @@ while True:
         
         # Change hostname option
         if num=="1":
-            os.system("clear" or "cls")
+            os.system("cls" or "clear")
         
             # Get Information Device from User
             ip=input("Enter IP Device: ")
@@ -35,12 +35,14 @@ while True:
                 'username': user,
                 'password': password,
             }
+
             # Call Module Hostname 
             Hostname.hostname_class.hostname_func(device_info=device_info,new_hostname=new_hostname)
 
+
         #### Config Vlan #### 
         elif num=="2":
-            os.system("clear" or "cls")
+            os.system("cls" or "clear")
             
             # Read all ip switch from iplist.txt 
             with open('iplist.txt', 'r') as f:
@@ -70,7 +72,7 @@ while True:
 
         # Config Trunk
         elif num=="3":
-            os.system("clear" or "cls")
+            os.system("cls" or "clear")
             
             # Read all ip switch from iplist.txt 
             with open('iplist.txt', 'r') as f:
@@ -85,7 +87,6 @@ while True:
                     # Get Information Device from User
                     user=input(f"Enter Username Device {ip}: ")
                     password=getpass.getpass(f"Enter Password Device {ip}: ")
-                    new_vlan=input("Enter New VLAN: ")
                     print(f"""{red}Please Enter Full Interface Name and range\n{reset}Example:\n{green}FastEthernet0/1-24 {reset} or {green}GigabitEthernet0/1-46{reset}\n""")
                     portnum=input(f"Enter Interface Port Range: ")
                     device_info={
@@ -100,7 +101,7 @@ while True:
 
         # Config Port Security
         elif num=="4":
-            os.system("clear" or "cls")
+            os.system("cls" or "clear")
             
             # Read all ip switch from iplist.txt 
             with open('iplist.txt', 'r') as f:
@@ -115,7 +116,6 @@ while True:
                     # Get Information Device from User
                     user=input(f"Enter Username Device {ip}: ")
                     password=getpass.getpass(f"Enter Password Device {ip}: ")
-                    new_vlan=input("Enter New VLAN: ")
                     print(f"""{red}Please Enter Full Interface Name and range\n{reset}Example:\n{green}FastEthernet0/1-24 {reset} or {green}GigabitEthernet0/1-46{reset}\n""")
                     portnum=input(f"Enter Interface Port Range: ")
                     device_info={
@@ -125,7 +125,7 @@ while True:
                         'password': password,
                     }
             
-                    # Call Module VALN 
+                    # Call Module Port Security 
                     portsecurity.poersec_class.port_security_func(device_info=device_info,port_number=portnum)
 
     except Exception as e:

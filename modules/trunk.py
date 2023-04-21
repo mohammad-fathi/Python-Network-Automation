@@ -1,5 +1,5 @@
 from netmiko import ConnectHandler
-
+from colorama import Fore
 class trunk_class:
     def trunk_func(device_info,trunk_port):
         try:
@@ -13,6 +13,10 @@ class trunk_class:
                                    "do wr"]
                 output = net_connect.send_config_set(config_commands)
                 net_connect.disconnect()
-                return output
+                print(f"{Fore.MAGENTA}{output}{Fore.RESET}")
+                print(f"{Fore.GREEN} Task Done...{Fore.RESET}")        
+                while True:
+                    if input("Press Enter to Main Menu...")=="":
+                        break
         except Exception as e:
             print(f"Failed to connect to Device {e}")

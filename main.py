@@ -97,7 +97,8 @@ while True:
                     # Call Module Trunk 
                     trunk.trunk_class.trunk_func(device_info=device_info,trunk_port=trunkport)   
 
-    
+        elif num=="4":
+            pass
                     
 
 

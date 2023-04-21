@@ -38,10 +38,8 @@ class Tools:
       [ 1 ]   -   Hostname
       [ 2 ]   -   VLAN
       [ 3 ]   -   Trunk
-      [ 4 ]   -   ARP Inspection
-      [ 5 ]   -   DHCP Snooping
-      [ 6 ]   -   Port Security
-      [ 7 ]   -   Backup
-      [ 8 ]   -   IEEE 802.1x
+      [ 4 ]   -   Port Security
+      [ 5 ]   -   Backup
+      [ 6 ]   -   IEEE 802.1x
       [ 0 ]   -   Custome Configuration
 """)

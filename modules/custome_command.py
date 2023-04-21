@@ -13,8 +13,5 @@ class custome_class:
                 net_connect.disconnect()
                 print(f"{Fore.MAGENTA}{output}{Fore.RESET}")
                 print(f"{Fore.GREEN} Task Done...{Fore.RESET}")        
-                while True:
-                    if input("Press Enter to Main Menu...")=="":
-                        break
         except Exception as e:
             print(f"Failed to connect to Device {e}")

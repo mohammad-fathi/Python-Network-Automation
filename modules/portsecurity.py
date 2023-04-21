@@ -20,9 +20,6 @@ class poersec_class:
                 output = net_connect.send_config_set(config_commands)
                 net_connect.disconnect()
                 print(f"{Fore.MAGENTA}{output}{Fore.RESET}")
-                print(f"{Fore.GREEN} Task Done...{Fore.RESET}")        
-                while True:
-                    if input("Press Enter to Main Menu...")=="":
-                        break        
+                print(f"{Fore.GREEN} Task Done...{Fore.RESET}")            
         except Exception as e:
             print(f"Failed to connect to Device {e}")

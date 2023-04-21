@@ -38,6 +38,9 @@ while True:
 
             # Call Module Hostname 
             Hostname.hostname_class.hostname_func(device_info=device_info,new_hostname=new_hostname)
+            if input("Press Enter to Main Menu...")=="\n":
+                functions.Tools.banner(None)
+                functions.Tools.options(None)
 
 
         #### Config Vlan #### 
@@ -69,6 +72,9 @@ while True:
             
                     # Call Module VALN 
                     vlan.vlan_class.hostname_func(device_info=device_info,new_vlan=new_vlan,portrange=portnum)
+                if input("Press Enter to Main Menu...")=="\n":
+                    functions.Tools.banner(None)
+                    functions.Tools.options(None)
 
         # Config Trunk
         elif num=="3":
@@ -98,6 +104,9 @@ while True:
             
                     # Call Module VALN 
                     trunk.trunk_class.trunk_func(device_info=device_info,trunk_port=portnum)
+                if input("Press Enter to Main Menu...")=="\n":
+                    functions.Tools.banner(None)
+                    functions.Tools.options(None)
 
         # Config Port Security
         elif num=="4":
@@ -127,10 +136,12 @@ while True:
             
                     # Call Module Port Security 
                     portsecurity.poersec_class.port_security_func(device_info=device_info,port_number=portnum)
+                if input("Press Enter to Main Menu...")=="\n":
+                    functions.Tools.banner(None)
+                    functions.Tools.options(None)
 
         elif num=="5":
             os.system("cls" or "clear")
-            
             # Read all ip switch from iplist.txt 
             with open('iplist.txt', 'r') as f:
                 ip_list = f.readlines()
@@ -153,7 +164,10 @@ while True:
             
                     # Call Module Backup
                     backup.backup_class.backup_func(device_info=device_info)
-
+                if input("Press Enter to Main Menu...")=="\n":
+                    functions.Tools.banner(None)
+                    functions.Tools.options(None)
+        
         elif num=="6":
             os.system("cls" or "clear")
             
@@ -186,6 +200,9 @@ while True:
             
                     # Call Module Custome Command
                     custome_command.custome_class.custome_func(device_info=device_info,usercommand=commands)
+                if input("Press Enter to Main Menu...")=="\n":
+                    functions.Tools.banner(None)
+                    functions.Tools.options(None)
         elif num=="0":
             break
     except Exception as e:

@@ -9,7 +9,7 @@ class poersec_class:
                 net_connect.enable()
 
                 # Change Hostname
-                config_commands = [f'interface {port_number}',
+                config_commands = [f'interface range {port_number}',
                                    "switchport port-security",
                                    "switchport port-security mac-address sticky",
                                    "switchport port-security violation restrict",

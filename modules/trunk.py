@@ -8,7 +8,7 @@ class trunk_class:
                 net_connect.enable()
 
                 # Config Trunk Port
-                config_commands = [f'interface {trunk_port}',
+                config_commands = [f'interface range {trunk_port}',
                                    "switchport mode trunk",
                                    "do wr"]
                 output = net_connect.send_config_set(config_commands)

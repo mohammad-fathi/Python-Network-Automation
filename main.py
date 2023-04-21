@@ -56,6 +56,11 @@ while True:
                     user=input(f"Enter Username Device {ip}: ")
                     password=getpass.getpass(f"Enter Password Device {ip}: ")
                     new_vlan=input("Enter New VLAN: ")
+                    print(f"""
+{red}Please Enter Full Interface Name and range
+{reset}Example:
+{green}FastEthernet0/1-24 {reset} or {green}GigabitEthernet0/1-46{reset}""")
+                    portnum=input(f"Enter Interface Port Range: ")
                     device_info={
                         'device_type': 'cisco_ios',
                         'ip': ip ,
@@ -64,70 +69,7 @@ while True:
                     }
             
                     # Call Module VALN 
-                    vlan.vlan_class.vlan_func(device_info=device_info,new_vlan=new_vlan)
-        # Config trunk Port
-        elif num=="3":
-            os.system("clear" or "cls")
-            
-            # Read all ip switch from iplist.txt 
-            with open('iplist.txt', 'r') as f:
-                ip_list = f.readlines()
-
-                # Connect to Switches in List
-                for ip in ip_list:
-
-                    # Strip any whitespace characters from the IP
-                    ip = ip.strip()
-
-                    # Get Information Device from User
-                    user=input(f"Enter Username Device {ip}: ")
-                    password=getpass.getpass(f"Enter Password Device {ip}: ")
-                    print(f"""
-                    {red} Help: Please Enter full name interface
-                    {white}Example:
-                    {green}FastEthernet0/1 {reset}or {green} GigabitEthernet0/1 {reset}""")
-                    
-                    trunkport=input("Enter Trunk Ports: ")
-                    device_info={
-                        'device_type': 'cisco_ios',
-                        'ip': ip ,
-                        'username': user,
-                        'password': password,
-                    }
-                    # Call Module Trunk 
-                    trunk.trunk_class.trunk_func(device_info=device_info,trunk_port=trunkport)   
-        # Config Port Security
-        elif num=="4":
-            os.system("clear" or "cls")
-            
-            # Read all ip switch from iplist.txt 
-            with open('iplist.txt', 'r') as f:
-                ip_list = f.readlines()
-
-                # Connect to Switches in List
-                for ip in ip_list:
-
-                    # Strip any whitespace characters from the IP
-                    ip = ip.strip()
-
-                    # Get Information Device from User
-                    user=input(f"Enter Username Device {ip}: ")
-                    password=getpass.getpass(f"Enter Password Device {ip}: ")
-                    print(f"""
-                    {red} Help: Please Enter full name interface
-                    {white}Example:
-                    {green}FastEthernet0/1-24 {reset}or {green} GigabitEthernet0/1-46 {reset}""")
-                    
-                    portrange=input("Enter Interface Range Port: ")
-                    device_info={
-                        'device_type': 'cisco_ios',
-                        'ip': ip ,
-                        'username': user,
-                        'password': password,
-                    }
-                    # Call Module Port Security 
-                    portsecurity.poersec_class.port_security_func(device_info=device_info,port_number=portrange)               
-                    
+                    vlan.vlan_class.hostname_func(device_info=device_info,new_vlan=new_vlan,portrange=portnum)
 
 
     except Exception as e:

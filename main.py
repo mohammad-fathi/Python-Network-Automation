@@ -1,4 +1,4 @@
-# Import libs
+# Define colores
 from colorama import init,Fore
 init()
 blue= Fore.BLUE
@@ -8,8 +8,8 @@ white=Fore.WHITE
 green=Fore.GREEN
 reset=Fore.RESET
 
-from modules import Hostname
-import functions , os
+from modules import Hostname,vlan
+import functions , os , getpass
 
 # Call Functions Main Menu
 while True:
@@ -27,7 +27,7 @@ while True:
             # Get Information Device from User
             ip=input("Enter IP Device: ")
             user=input("Enter Username: ")
-            password=input("Enter Password: ")
+            password=getpass.getpass("Enter Password: ")
             new_hostname=input("Enter New Device Hostname: ")
             device_info={
                 'device_type': 'cisco_ios',
@@ -36,8 +36,36 @@ while True:
                 'password': password,
             }
         
-            # Call Function Hostname 
+            # Call Module Hostname 
             Hostname.hostname_class.hostname_func(device_info=device_info,new_hostname=new_hostname)
+
+        elif num=="2":
+            os.system("clear" or "cls")
+            
+            # Read all ip switch from iplist.txt 
+            with open('iplist.txt', 'r') as f:
+                ip_list = f.readlines()
+
+                # Connect to Switches in List
+                for ip in ip_list:
+
+                    # Strip any whitespace characters from the IP
+                    ip = ip.strip()
+
+                    # Get Information Device from User
+                    user=input(f"Enter Username Device {ip}: ")
+                    password=getpass.getpass(f"Enter Password Device {ip}: ")
+                    new_vlan=input("Enter New VLAN: ")
+                    device_info={
+                        'device_type': 'cisco_ios',
+                        'ip': ip ,
+                        'username': user,
+                        'password': password,
+                    }
+            
+                    # Call Module VALN 
+                    vlan.vlan_class.hostname_func(device_info=device_info,new_vlan=new_vlan)
+
 
     except Exception as e:
         print(f"{red} Error: {e}")

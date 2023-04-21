@@ -20,7 +20,7 @@ while True:
     try:
         num=input(f"{green}[ + ]{reset} Enter a Number from list: ")
         
-        # Select User an option
+        # Change hostname option
         if num=="1":
             os.system("clear" or "cls")
         
@@ -38,7 +38,7 @@ while True:
         
             # Call Module Hostname 
             Hostname.hostname_class.hostname_func(device_info=device_info,new_hostname=new_hostname)
-
+        # Config Vlan 
         elif num=="2":
             os.system("clear" or "cls")
             
@@ -65,7 +65,7 @@ while True:
             
                     # Call Module VALN 
                     vlan.vlan_class.vlan_func(device_info=device_info,new_vlan=new_vlan)
-
+        # Config trunk Port
         elif num=="3":
             os.system("clear" or "cls")
             
@@ -96,7 +96,7 @@ while True:
                     }
                     # Call Module Trunk 
                     trunk.trunk_class.trunk_func(device_info=device_info,trunk_port=trunkport)   
-
+        # Config Port Security
         elif num=="4":
             os.system("clear" or "cls")
             

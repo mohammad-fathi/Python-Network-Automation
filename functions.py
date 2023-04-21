@@ -38,7 +38,7 @@ class Tools:
       [ 1 ]   -   Hostname
       [ 2 ]   -   VLAN
       [ 3 ]   -   Trunk
-      [ 4 ]   -   Port Security
+      [ 4 ]   -   Port Security and Spaning tree
       [ 5 ]   -   Backup
       [ 6 ]   -   IEEE 802.1x
       [ 0 ]   -   Custome Configuration

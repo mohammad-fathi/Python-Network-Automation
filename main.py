@@ -8,7 +8,7 @@ white=Fore.WHITE
 green=Fore.GREEN
 reset=Fore.RESET
 
-from modules import Hostname,vlan,trunk,portsecurity
+from modules import Hostname,vlan,trunk,portsecurity,backup
 import functions , os , getpass , time
 
 # Call Functions Main Menu
@@ -128,6 +128,31 @@ while True:
                     # Call Module Port Security 
                     portsecurity.poersec_class.port_security_func(device_info=device_info,port_number=portnum)
 
+        elif num=="5":
+            os.system("cls" or "clear")
+            
+            # Read all ip switch from iplist.txt 
+            with open('iplist.txt', 'r') as f:
+                ip_list = f.readlines()
+
+                # Connect to Switches in List
+                for ip in ip_list:
+
+                    # Strip any whitespace characters from the IP
+                    ip = ip.strip()
+
+                    # Get Information Device from User
+                    user=input(f"Enter Username Device {ip}: ")
+                    password=getpass.getpass(f"Enter Password Device {ip}: ")
+                    device_info={
+                        'device_type': 'cisco_ios',
+                        'ip': ip ,
+                        'username': user,
+                        'password': password,
+                    }
+            
+                    # Call Module Backup
+                    backup.backup_class.backup_func(device_info=device_info)
     except Exception as e:
         print(f"{red} Error: {e}")
         input()

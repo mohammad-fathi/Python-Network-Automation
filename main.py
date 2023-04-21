@@ -8,7 +8,7 @@ white=Fore.WHITE
 green=Fore.GREEN
 reset=Fore.RESET
 
-from modules import Hostname,vlan,trunk,portsecurity,backup
+from modules import Hostname,vlan,trunk,portsecurity,backup,custome_command
 import functions , os , getpass , time
 
 # Call Functions Main Menu
@@ -153,6 +153,41 @@ while True:
             
                     # Call Module Backup
                     backup.backup_class.backup_func(device_info=device_info)
+
+        elif num=="6":
+            os.system("cls" or "clear")
+            
+            # Read all ip switch from iplist.txt 
+            with open('iplist.txt', 'r') as f:
+                ip_list = f.readlines()
+
+                # Connect to Switches in List
+                for ip in ip_list:
+
+                    # Strip any whitespace characters from the IP
+                    ip = ip.strip()
+
+                    # Get Information Device from User
+                    user=input(f"Enter Username Device {ip}: ")
+                    password=getpass.getpass(f"Enter Password Device {ip}: ")
+                    commands = []
+                    while True:
+                        command = input('Enter a command (or "exit" to quit): ')
+                        if command.lower() == 'exit':
+                            break
+                        else:
+                            commands.append(command)
+                    device_info={
+                        'device_type': 'cisco_ios',
+                        'ip': ip ,
+                        'username': user,
+                        'password': password,
+                    }
+            
+                    # Call Module Custome Command
+                    custome_command.custome_class.custome_func(device_info=device_info,usercommand=commands)
+        elif num=="0":
+            break
     except Exception as e:
         print(f"{red} Error: {e}")
         input()

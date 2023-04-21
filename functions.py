@@ -40,5 +40,6 @@ class Tools:
       [ 3 ]   -   Trunk
       [ 4 ]   -   Port Security and Spaning tree
       [ 5 ]   -   Backup
-      [ 0 ]   -   Custome Configuration
+      [ 6 ]   -   Custome Configuration
+      [ 0 ]   -   Exit
 """)

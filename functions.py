@@ -40,6 +40,5 @@ class Tools:
       [ 3 ]   -   Trunk
       [ 4 ]   -   Port Security and Spaning tree
       [ 5 ]   -   Backup
-      [ 6 ]   -   IEEE 802.1x
       [ 0 ]   -   Custome Configuration
 """)

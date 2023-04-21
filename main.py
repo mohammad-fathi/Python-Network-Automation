@@ -56,6 +56,11 @@ while True:
                     user=input(f"Enter Username Device {ip}: ")
                     password=getpass.getpass(f"Enter Password Device {ip}: ")
                     new_vlan=input("Enter New VLAN: ")
+                    print(f"""
+{red}Please Enter Full Interface Name and range
+{reset}Example:
+{green}FastEthernet0/1-24 {reset} or {green}GigabitEthernet0/1-46{reset}""")
+                    portnum=input(f"Enter Interface Port Range: ")
                     device_info={
                         'device_type': 'cisco_ios',
                         'ip': ip ,
@@ -64,7 +69,7 @@ while True:
                     }
             
                     # Call Module VALN 
-                    vlan.vlan_class.hostname_func(device_info=device_info,new_vlan=new_vlan)
+                    vlan.vlan_class.hostname_func(device_info=device_info,new_vlan=new_vlan,portrange=portnum)
 
 
     except Exception as e:
